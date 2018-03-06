@@ -44,13 +44,6 @@ class Plugin(BasePlugin):
         d.export_prev_txs_button = b = QPushButton(_("Export for offline wallet"))
         b.clicked.connect(lambda: self.do_export(d))
         d.buttons.insert(0, b)
-        self.transaction_dialog_update(d)
-
-    @hook
-    def transaction_dialog_update(self, d):
-        if not d.wallet.network:
-            d.export_prev_txs_button.hide()
-            return
 
     @hook
     def init_menubar_tools(self, main_window, tools_menu):
