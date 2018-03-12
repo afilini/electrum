@@ -117,5 +117,6 @@ def read_tx_from_file(main_window):
     tx = Transaction(tx_hex)
     for txin in tx.inputs():
         txin["prev_tx"] = Transaction(prev_txs_hex.get(txin["prevout_hash"]))
+        main_window.save_transaction_into_wallet(txin["prev_tx"])
 
     return tx
